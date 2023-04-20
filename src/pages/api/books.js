@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: process.env.JSON_SERVER_URL,
+  baseURL: "localhost:3001",
 });
 
 export async function fetchBooks() {
