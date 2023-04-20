@@ -1,3 +1,75 @@
 {
-  "books": []
+  "books": [
+    {
+      "id": "0a4d3c3f-e8ed-4a09-a9a9-2c1f8a1a23d1",
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "totalPages": 180,
+      "currentPage": 100,
+      "hasNote": true,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/81QTj+6MxlL.jpg"
+    },
+    {
+      "id": "c0ef0d9d-bb07-4f78-b0b3-99d1edcd6eb8",
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "totalPages": 281,
+      "currentPage": 50,
+      "hasNote": false,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/81jknU7pFzL.jpg"
+    },
+    {
+      "id": "7f2d5061-4d72-4e4e-8ab6-c75890a9f433",
+      "title": "1984",
+      "author": "George Orwell",
+      "totalPages": 328,
+      "currentPage": 200,
+      "hasNote": true,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/71Swqqe7XAL.jpg"
+    },
+    {
+      "id": "a120d40a-273e-49f1-88b9-af9b20117d80",
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "totalPages": 279,
+      "currentPage": 279,
+      "hasNote": false,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/71KfFNz7LmL.jpg"
+    },
+    {
+      "id": "a7c14f28-309a-46d9-9f18-53727d7df0c6",
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "totalPages": 234,
+      "currentPage": 0,
+      "hasNote": true,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/51sUbKw+CeL._SY445_.jpg"
+    },
+    {
+      "id": "e9c98c94-909a-47cf-953f-fb2cdaeb09d8",
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "totalPages": 310,
+      "currentPage": 310,
+      "hasNote": true,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/91NqWwuQlgL.jpg"
+    }
+  ],
+  "notes": [
+    {
+      "id": 1,
+      "bookId": 1,
+      "content": "This is a note about The Great Gatsby."
+    },
+    {
+      "id": 2,
+      "bookId": 1,
+      "content": "Another note about The Great Gatsby."
+    },
+    {
+      "id": 3,
+      "bookId": 2,
+      "content": "This is a note about To Kill a Mockingbird."
+    }
+  ]
 }
