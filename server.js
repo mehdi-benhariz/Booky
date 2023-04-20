@@ -9,16 +9,14 @@ const server = jsonServer.create();
 const router = jsonServer.router(isProductionEnv ? clone(data) : "db.json", {
   _isFake: isProductionEnv,
 });
-const middlewares = jsonServer.defaults("/api");
+
+const middlewares = jsonServer.defaults();
+
+// Serve the JSON data on the '/api' path
+server.use("/api", router);
 
 server.use(middlewares);
 
-server.use((req, res, next) => {
-  if (req.path !== "/") router.db.setState(clone(data));
-  next();
-});
-
-server.use(router);
 server.listen(process.env.PORT || 3001, () => {
   console.log("JSON Server is running");
 });
