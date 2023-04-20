@@ -7,7 +7,7 @@
     "dev": "next dev & npm run server",
     "server": "json-server --watch db.json --port 3001",
     "build": "next build",
-    "start": "next start",
+    "start": "next start & npm run server",
     "lint": "next lint"
   },
   "dependencies": {
