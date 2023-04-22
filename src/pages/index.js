@@ -1,61 +1,20 @@
 import {
   Box,
-  Center,
   Flex,
-  Grid,
-  GridItem,
   Heading,
   IconButton,
   Image,
   Progress,
   Text,
 } from "@chakra-ui/react";
-import {
-  AddIcon,
-  SearchIcon,
-  Icon,
-  EditIcon,
-  DeleteIcon,
-  SettingsIcon,
-} from "@chakra-ui/icons";
-import { CiStickyNote, BsThreeDots } from "react-icons/ci";
-import Link from "next/link";
-import Navbar from "@/layouts/NavBar";
+import { AddIcon, EditIcon, DeleteIcon } from "@chakra-ui/icons";
+
+import Options from "@/layouts/Options";
 export default function HomePage() {
   return (
     <Box p={10}>
-      <Navbar />
       <Box w="50%" mt="40px">
-        <Grid templateColumns="repeat(4, 1fr)" mx="auto">
-          <GridItem>
-            <Link href="/add">
-              <Center h="140px" w="140px" bg="white" boxShadow="lg">
-                <AddIcon boxSize={10} color={"green.500"} />
-              </Center>
-            </Link>
-          </GridItem>
-          <GridItem>
-            <Link href="/books">
-              <Center h="140px" w="140px" bg="white" boxShadow="lg">
-                <SearchIcon boxSize={10} color={"purple.500"} />
-              </Center>
-            </Link>
-          </GridItem>
-          <GridItem>
-            <Link href="/notes">
-              <Center h="140px" w="140px" bg="white" boxShadow="lg">
-                <Icon as={CiStickyNote} boxSize={10} color={"yellow.500"} />
-              </Center>
-            </Link>
-          </GridItem>
-          <GridItem>
-            <Link href="/add">
-              <Center h="140px" w="140px" bg="white" boxShadow="lg">
-                <SettingsIcon boxSize={10} color={"gray.500"} />
-              </Center>
-            </Link>
-          </GridItem>
-        </Grid>
+        <Options />
       </Box>
       {/* ! Idea : recent red books can be an array of 3 elements , each time you do edit or access
       it pushes to array and check the size, if it passes 10 (example) it pop the last visited elements */}

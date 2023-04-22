@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8000/api",
+  baseURL: "http://localhost:3001",
 });
 
 export async function fetchBooks() {
@@ -19,6 +19,36 @@ export async function searchBooks(searchTerm) {
     return response.data;
   } catch (error) {
     console.error("Error searching books:", error);
+    throw error;
+  }
+}
+
+export async function InsertBook(book) {
+  try {
+    const response = await api.post("/books", book);
+    return response.data;
+  } catch (error) {
+    console.error("Error adding book:", error);
+    throw error;
+  }
+}
+
+export async function deleteBook(bookId) {
+  try {
+    const response = await api.delete(`/books/${bookId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting book:", error);
+    throw error;
+  }
+}
+
+export async function updateBook(bookId, updates) {
+  try {
+    const response = await api.patch(`/books/${bookId}`, updates);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating book:", error);
     throw error;
   }
 }

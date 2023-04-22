@@ -6,7 +6,7 @@
     "dev": "next dev & npm run server",
     "server": "json-server --watch db.json --port 3001",
     "build": "next build",
-    "start": "next start",
+    "start": "next start & npm run server",
     "lint": "next lint"
   },
   "dependencies": {
@@ -15,14 +15,14 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "axios": "^1.3.6",
+    "clone": "^2.1.2",
     "framer-motion": "^10.12.4",
+    "json-server": "^0.17.1",
     "next": "13.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
-    "uuid": "^9.0.0",
-    "clone": "^2.1.2",
-    "json-server": "^0.17.1"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "eslint": "^8.38.0",
