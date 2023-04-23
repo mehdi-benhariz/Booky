@@ -1,0 +1,5 @@
+[+] create a note details modal that will be implemented with edit function
+[+] check error and edge case in book update page
+[+] work on recen tbooks
+[+] add recent date to book and note
+[+] implement recent books function in home page

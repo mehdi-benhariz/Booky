@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import BookCard from "@/layouts/BookCard";
-import { Flex, Grid, GridItem, Input } from "@chakra-ui/react";
+import { Button, Flex, Grid, GridItem, Input, Icon } from "@chakra-ui/react";
+import { GrFilter } from "react-icons/gr";
 import { fetchBooks, searchBooks } from "../api/books";
 import Navbar from "@/layouts/NavBar";
+import FilterModal from "@/layouts/FilterModal";
 
 export async function getStaticProps() {
   const books = await fetchBooks();
@@ -18,12 +20,20 @@ const Books = ({ books }) => {
 
   const [filteredBooks, setFilteredBooks] = useState(books);
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedFilters, setSelectedFilters] = useState([]);
+
+  const handleFilterChange = (filters) => setSelectedFilters(filters);
+
+  const handleApplyFilters = () => {
+    // Do something with selectedFilters
+    setIsOpen(false);
+  };
+
   useEffect(() => {
-    if (searchTerm !== "") {
+    if (searchTerm !== "")
       searchBooks(searchTerm).then((data) => setFilteredBooks(data));
-    } else {
-      setFilteredBooks(books);
-    }
+    else setFilteredBooks(books);
   }, [searchTerm, books]);
 
   const renderBookCards = () => {
@@ -43,6 +53,20 @@ const Books = ({ books }) => {
           onChange={handleSearchTermChange}
           maxW="md"
           mb="6"
+        />
+        <Button
+          leftIcon={<Icon as={GrFilter} />}
+          onClick={() => setIsOpen(true)}
+          mb="6"
+        >
+          Filter
+        </Button>
+
+        <FilterModal
+          isOpen={isOpen}
+          handleFilterChange={handleFilterChange}
+          selectedFilters={selectedFilters}
+          handleApplyFilters={handleApplyFilters}
         />
         <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]} gap={6}>
           {renderBookCards()}
