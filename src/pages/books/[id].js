@@ -10,45 +10,37 @@ import {
   EditableInput,
   EditablePreview,
   Text,
+  useToast,
 } from "@chakra-ui/react";
-import { getBookById, fetchBooks, deleteBook } from "../api/books";
+import { getBookById, fetchBooks, deleteBook, updateBook } from "../api/books";
 import { useRouter } from "next/router";
 import { handleFieldControl } from "@/utils/validation";
 import { InsertNote, updateNote } from "../api/notes";
+import { countProgress } from "@/utils/UI";
 
-export async function getStaticPaths() {
-  const bookIds = await fetchBooks();
-  const paths = bookIds.map(({ id }) => ({ params: { id } }));
-  // Return the paths
-  return { paths, fallback: true };
-}
-export async function getStaticProps({ params }) {
-  const book = await getBookById(params.id, params.hasNote);
-
-  return { props: { book } };
-}
 const BookDetails = ({ book }) => {
   const [newBook, setNewBook] = useState({ ...book });
-  const [newNote, setNewNote] = useState({ ...book.note });
+  const [newNote, setNewNote] = useState({ ...book.notes[0] });
   const router = useRouter();
+  const toast = useToast();
 
+  console.log(book);
   if (router.isFallback) {
-    //give better laoding experience
+    //TODO give better laoding experience
     return <div>Loading...</div>;
   }
-  const countProgress = (currentPage, totalPages) =>
-    Math.round((currentPage / totalPages) * 100);
-  //
+
+  //*update fields for book
   const handleBookInputChange = (event, index) => {
     const { name, value } = event.target;
     let bookObj = { ...newBook };
     if (!handleFieldControl(name, value)) return;
     bookObj[name] =
-      name === ("totalPages" || "currentPage") ? parseInt(value) : value;
+      name === "totalPages" || name === "currentPage" ? parseInt(value) : value;
     setNewBook(bookObj);
   };
 
-  //
+  //*update fields for note
   const handleNoteInputChange = (event) => {
     const { name, value } = event.target;
     let noteObj = { ...newNote };
@@ -58,10 +50,20 @@ const BookDetails = ({ book }) => {
   };
 
   async function handleUpdateBook() {
+    console.log("updating book...");
+    console.log({ newBook });
     try {
+      delete newBook.notes;
       const res = await updateBook(newBook.id, newBook);
       console.log(res);
       //toast success
+      toast({
+        title: "Book updated.",
+        description: "We've updated your book for you.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
       if (res) return true;
     } catch (error) {
       //toast error
@@ -72,10 +74,16 @@ const BookDetails = ({ book }) => {
   async function handleAddOrUpdateNote() {
     try {
       let res;
-
       if (newBook.hasNote) {
         res = await updateNote(newNote.id, newNote);
-        //toast success
+
+        toast({
+          title: "Note updated.",
+          description: "We've updated your note for you.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
       } else {
         if (!newNote.content) return;
         res = await InsertNote({
@@ -84,6 +92,13 @@ const BookDetails = ({ book }) => {
         });
         setNewBook({ ...newBook, hasNote: true });
         //toast success
+        toast({
+          title: "Note added.",
+          description: "We've added your note for you.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
       }
       if (res) return true;
     } catch (error) {
@@ -92,14 +107,21 @@ const BookDetails = ({ book }) => {
   }
   async function handleUpdateDetails(e) {
     e.preventDefault();
-    await handleAddOrUpdateNote();
-    await handleUpdateBook();
+    if ((await handleAddOrUpdateNote()) && (await handleUpdateBook()))
+      router.push("/books");
   }
 
   async function handleDeleteBook(e) {
     e.preventDefault();
     try {
       await deleteBook(newBook.id);
+      toast({
+        title: "Book deleted.",
+        description: "We've deleted your book for you.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
       router.push("/");
     } catch (error) {
       console.error(error);
@@ -107,7 +129,7 @@ const BookDetails = ({ book }) => {
   }
 
   return (
-    <div>
+    <>
       <h1>Book Details</h1>
       return (
       <Flex h="100vh" justify="center" align="center" bg="gray.200">
@@ -131,11 +153,11 @@ const BookDetails = ({ book }) => {
             <Box>
               <Editable defaultValue={newBook.title} fontSize="3xl" mb={4}>
                 <EditablePreview />
-                <EditableInput onChange={handleBookInputChange} />
+                <EditableInput onChange={handleBookInputChange} name="title" />
               </Editable>
               <Editable defaultValue={newBook.author} fontSize="xl" mb={4}>
                 <EditablePreview />
-                <EditableInput onChange={handleBookInputChange} />
+                <EditableInput onChange={handleBookInputChange} name="author" />
               </Editable>
               <Text mb={4}>
                 Progress: You are in page{" "}
@@ -149,6 +171,7 @@ const BookDetails = ({ book }) => {
                     onChange={handleBookInputChange}
                     w="30px"
                     fontSize="sm"
+                    name="currentPage"
                   />
                 </Editable>{" "}
                 Out of{" "}
@@ -159,6 +182,7 @@ const BookDetails = ({ book }) => {
                 >
                   <EditablePreview fontWeight="bold" />
                   <EditableInput
+                    name="totalPages"
                     w="30px"
                     fontSize="sm"
                     onChange={handleBookInputChange}
@@ -188,6 +212,7 @@ const BookDetails = ({ book }) => {
                 Note:
               </Text>
               <Textarea
+                name="content"
                 defaultValue={newNote.content}
                 onChange={handleNoteInputChange}
                 size="lg"
@@ -201,8 +226,21 @@ const BookDetails = ({ book }) => {
         </Box>
       </Flex>
       );
-    </div>
+    </>
   );
 };
 
 export default BookDetails;
+
+export async function getStaticPaths() {
+  const bookIds = await fetchBooks();
+  const paths = bookIds.map(({ id }) => ({ params: { id } }));
+  // Return the paths
+  return { paths, fallback: true };
+}
+export async function getStaticProps({ params }) {
+  console.log(params);
+  const book = await getBookById(params.id, true);
+
+  return { props: { book } };
+}

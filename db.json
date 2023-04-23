@@ -5,9 +5,10 @@
       "title": "The Great Gatsby",
       "author": "F. Scott Fitzgerald",
       "totalPages": 180,
-      "currentPage": 100,
+      "currentPage": 150,
       "hasNote": true,
-      "image": "https://images-na.ssl-images-amazon.com/images/I/81QTj+6MxlL.jpg"
+      "image": "https://images-na.ssl-images-amazon.com/images/I/81QTj+6MxlL.jpg",
+      "": "The Great Gatsby edit"
     },
     {
       "id": "c0ef0d9d-bb07-4f78-b0b3-99d1edcd6eb8",
@@ -46,6 +47,24 @@
       "image": "https://images-na.ssl-images-amazon.com/images/I/91NqWwuQlgL.jpg"
     },
     {
+      "id": "5b73de5b-65b8-47cf-bf25-60f48750b1e8",
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "totalPages": 311,
+      "currentPage": 311,
+      "hasNote": false,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/81G0xQe-xuL.jpg"
+    },
+    {
+      "id": "25949c87-91d8-41d2-98c2-d38e45eaf8f6",
+      "title": "One Hundred Years of Solitude",
+      "author": "Gabriel García Márquez",
+      "totalPages": 417,
+      "currentPage": 417,
+      "hasNote": false,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/71g5Ajdg-oL.jpg"
+    },
+    {
       "id": "26b9437f-01cf-4bc6-87d3-447df7138ed9",
       "title": "test",
       "author": "mehdi",
@@ -53,13 +72,40 @@
       "image": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781421575414/legend-of-zelda-a-link-to-the-past-9781421575414_lg.jpg",
       "currentPage": 0,
       "hasNote": false
+    },
+    {
+      "id": "2e050d13-8e72-4fcb-befc-23896d0a1aaf",
+      "title": "The Picture of Dorian Gray",
+      "author": "Oscar Wilde",
+      "totalPages": 254,
+      "currentPage": 254,
+      "hasNote": false,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/71m-H0mUsOL.jpg"
+    },
+    {
+      "id": "c23dcb13-0052-4a3a-bf36-66a80a7e38ec",
+      "title": "Animal Farm",
+      "author": "George Orwell",
+      "totalPages": 112,
+      "currentPage": 112,
+      "hasNote": false,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/81IZW1+4S9L.jpg"
+    },
+    {
+      "id": "d8c32af4-ef1f-4cf1-bb33-1720c2f3f9c2",
+      "title": "The Odyssey",
+      "author": "Homer",
+      "totalPages": 416,
+      "currentPage": 53,
+      "hasNote": false,
+      "image": "https://images-na.ssl-images-amazon.com/images/I/81fDh3ObNvL.jpg"
     }
   ],
   "notes": [
     {
       "id": 1,
       "bookId": "0a4d3c3f-e8ed-4a09-a9a9-2c1f8a1a23d1",
-      "content": "This is a note about The Great Gatsby."
+      "content": "This is a note about The Great Gatsby and I am writing some stuff here.  I write this note with mansour"
     },
     {
       "id": 2,
