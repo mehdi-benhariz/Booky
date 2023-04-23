@@ -19,15 +19,6 @@
       "image": "https://images-na.ssl-images-amazon.com/images/I/81jknU7pFzL.jpg"
     },
     {
-      "id": "7f2d5061-4d72-4e4e-8ab6-c75890a9f433",
-      "title": "1984",
-      "author": "George Orwell",
-      "totalPages": 328,
-      "currentPage": 200,
-      "hasNote": true,
-      "image": "https://images-na.ssl-images-amazon.com/images/I/71Swqqe7XAL.jpg"
-    },
-    {
       "id": "a120d40a-273e-49f1-88b9-af9b20117d80",
       "title": "Pride and Prejudice",
       "author": "Jane Austen",
@@ -42,7 +33,7 @@
       "author": "J.D. Salinger",
       "totalPages": 234,
       "currentPage": 0,
-      "hasNote": true,
+      "hasNote": false,
       "image": "https://images-na.ssl-images-amazon.com/images/I/51sUbKw+CeL._SY445_.jpg"
     },
     {
@@ -67,17 +58,17 @@
   "notes": [
     {
       "id": 1,
-      "bookId": 1,
+      "bookId": "0a4d3c3f-e8ed-4a09-a9a9-2c1f8a1a23d1",
       "content": "This is a note about The Great Gatsby."
     },
     {
       "id": 2,
-      "bookId": 1,
-      "content": "Another note about The Great Gatsby."
+      "bookId": "26b9437f-01cf-4bc6-87d3-447df7138ed9",
+      "content": "Another note about Mehdi and his book."
     },
     {
       "id": 3,
-      "bookId": 2,
+      "bookId": "c0ef0d9d-bb07-4f78-b0b3-99d1edcd6eb8",
       "content": "This is a note about To Kill a Mockingbird."
     }
   ]

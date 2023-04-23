@@ -52,7 +52,6 @@ export default function AddBook() {
     setBooks(newBooks);
   };
 
-  //* Handle input change
   const handleInputChange = (event, index) => {
     const { name, value } = event.target;
     const newBooks = [...books];

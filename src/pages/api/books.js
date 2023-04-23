@@ -52,3 +52,15 @@ export async function updateBook(bookId, updates) {
     throw error;
   }
 }
+
+export async function getBookById(bookId, includeNote = false) {
+  try {
+    let url = `/books/${bookId}`;
+    if (includeNote) url += "?_embed=notes";
+    const response = await api.get(url);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching book:", error);
+    throw error;
+  }
+}
