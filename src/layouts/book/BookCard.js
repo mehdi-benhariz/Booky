@@ -9,7 +9,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import BookStatus from "./BookStatus";
+import BookStatus from "../BookStatus";
 const BookCard = (book) => {
   const { id, title, author, totalPages, currentPage, hasNot, image } = book;
   return (

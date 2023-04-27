@@ -13,9 +13,30 @@ export async function fetchBooks() {
     throw error;
   }
 }
-export async function searchBooks(searchTerm) {
+export async function searchBooks({
+  searchTerm = "",
+  filters = [],
+  sort = "",
+  page = 1,
+  limit = 10,
+  includeTotal = false,
+}) {
   try {
-    const response = await api.get(`/books?q=${searchTerm}`);
+    console.log({ searchTerm });
+    let url = `/books?q=${searchTerm}`;
+    const start = (page - 1) * limit;
+    const end = start + limit;
+    url += `&_start=${start}&_end=${end}`;
+
+    if (includeTotal) url += "&_embed=total";
+    if (sort !== "") url += `&_sort=${sort}`;
+    if (filters.length > 0)
+      filters.forEach((filter) => {
+        url += `&${filter.type}=${filter.value}`;
+      });
+    console.log(url);
+    const response = await api.get(url);
+
     return response.data;
   } catch (error) {
     console.error("Error searching books:", error);
@@ -25,7 +46,10 @@ export async function searchBooks(searchTerm) {
 
 export async function InsertBook(book) {
   try {
-    const response = await api.post("/books", book);
+    const response = await api.post("/books", {
+      ...book,
+      recentUpdate: new Date(),
+    });
     return response.data;
   } catch (error) {
     console.error("Error adding book:", error);
@@ -45,7 +69,10 @@ export async function deleteBook(bookId) {
 
 export async function updateBook(bookId, updates) {
   try {
-    const response = await api.patch(`/books/${bookId}`, updates);
+    const response = await api.patch(`/books/${bookId}`, {
+      ...updates,
+      recentUpdate: new Date(),
+    });
     return response.data;
   } catch (error) {
     console.error("Error updating book:", error);

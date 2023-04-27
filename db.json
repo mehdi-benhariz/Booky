@@ -5,10 +5,10 @@
       "title": "The Great Gatsby",
       "author": "F. Scott Fitzgerald",
       "totalPages": 180,
-      "currentPage": 150,
+      "currentPage": 160,
       "hasNote": true,
-      "image": "https://images-na.ssl-images-amazon.com/images/I/81QTj+6MxlL.jpg",
-      "": "The Great Gatsby edit"
+      "image": "https://en.wikipedia.org/wiki/The_Great_Gatsby#/media/File:The_Great_Gatsby_Cover_1925_Retouched.jpg",
+      "recentUpdate": "2023-04-27T05:22:01.100Z"
     },
     {
       "id": "c0ef0d9d-bb07-4f78-b0b3-99d1edcd6eb8",
@@ -17,7 +17,8 @@
       "totalPages": 281,
       "currentPage": 50,
       "hasNote": false,
-      "image": "https://images-na.ssl-images-amazon.com/images/I/81jknU7pFzL.jpg"
+      "image": "https://en.wikipedia.org/wiki/File:To_Kill_a_Mockingbird_(first_edition_cover).jpg",
+      "recentUpdate": "2023-04-26T12:30:00Z"
     },
     {
       "id": "a120d40a-273e-49f1-88b9-af9b20117d80",
@@ -26,7 +27,8 @@
       "totalPages": 279,
       "currentPage": 279,
       "hasNote": false,
-      "image": "https://images-na.ssl-images-amazon.com/images/I/71KfFNz7LmL.jpg"
+      "image": "https://images-na.ssl-images-amazon.com/images/I/71KfFNz7LmL.jpg",
+      "recentUpdate": "2023-04-26T12:30:00Z"
     },
     {
       "id": "a7c14f28-309a-46d9-9f18-53727d7df0c6",
@@ -35,7 +37,8 @@
       "totalPages": 234,
       "currentPage": 0,
       "hasNote": false,
-      "image": "https://images-na.ssl-images-amazon.com/images/I/51sUbKw+CeL._SY445_.jpg"
+      "image": "https://en.wikipedia.org/wiki/The_Catcher_in_the_Rye#/media/File:The_Catcher_in_the_Rye_(1951,_first_edition_cover).jpg",
+      "recentUpdate": "2023-04-26T12:30:00Z"
     },
     {
       "id": "e9c98c94-909a-47cf-953f-fb2cdaeb09d8",
@@ -44,7 +47,8 @@
       "totalPages": 310,
       "currentPage": 310,
       "hasNote": true,
-      "image": "https://images-na.ssl-images-amazon.com/images/I/91NqWwuQlgL.jpg"
+      "image": "https://en.wikipedia.org/wiki/The_Hobbit#/media/File:TheHobbit_FirstEdition.jpg",
+      "recentUpdate": "2023-04-26T12:30:00Z"
     },
     {
       "id": "5b73de5b-65b8-47cf-bf25-60f48750b1e8",
@@ -53,7 +57,8 @@
       "totalPages": 311,
       "currentPage": 311,
       "hasNote": false,
-      "image": "https://images-na.ssl-images-amazon.com/images/I/81G0xQe-xuL.jpg"
+      "image": "https://en.wikipedia.org/wiki/Brave_New_World#/media/File:BraveNewWorld_FirstEdition.jpg",
+      "recentUpdate": "2023-04-26T12:30:00Z"
     },
     {
       "id": "25949c87-91d8-41d2-98c2-d38e45eaf8f6",
@@ -62,7 +67,8 @@
       "totalPages": 417,
       "currentPage": 417,
       "hasNote": false,
-      "image": "https://images-na.ssl-images-amazon.com/images/I/71g5Ajdg-oL.jpg"
+      "image": "https://en.wikipedia.org/wiki/One_Hundred_Years_of_Solitude#/media/File:Cien_a%C3%B1os_de_soledad_(book_cover,_1967).jpg",
+      "recentUpdate": "2023-04-26T12:30:00Z"
     },
     {
       "id": "26b9437f-01cf-4bc6-87d3-447df7138ed9",
@@ -71,7 +77,8 @@
       "totalPages": "100",
       "image": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781421575414/legend-of-zelda-a-link-to-the-past-9781421575414_lg.jpg",
       "currentPage": 0,
-      "hasNote": false
+      "hasNote": false,
+      "recentUpdate": "2023-04-26T12:30:00Z"
     },
     {
       "id": "2e050d13-8e72-4fcb-befc-23896d0a1aaf",
@@ -80,7 +87,8 @@
       "totalPages": 254,
       "currentPage": 254,
       "hasNote": false,
-      "image": "https://images-na.ssl-images-amazon.com/images/I/71m-H0mUsOL.jpg"
+      "image": "https://en.wikipedia.org/wiki/The_Picture_of_Dorian_Gray#/media/File:Lippincott_doriangray.jpg",
+      "recentUpdate": "2023-04-26T12:30:00Z"
     },
     {
       "id": "c23dcb13-0052-4a3a-bf36-66a80a7e38ec",
@@ -89,7 +97,8 @@
       "totalPages": 112,
       "currentPage": 112,
       "hasNote": false,
-      "image": "https://images-na.ssl-images-amazon.com/images/I/81IZW1+4S9L.jpg"
+      "image": "https://en.wikipedia.org/wiki/Animal_Farm#/media/File:Animal_Farm_-_1st_edition.jpg",
+      "recentUpdate": "2023-04-26T12:30:00Z"
     },
     {
       "id": "d8c32af4-ef1f-4cf1-bb33-1720c2f3f9c2",
@@ -98,7 +107,8 @@
       "totalPages": 416,
       "currentPage": 53,
       "hasNote": false,
-      "image": "https://images-na.ssl-images-amazon.com/images/I/81fDh3ObNvL.jpg"
+      "image": "https://en.wikipedia.org/wiki/Odyssey#/media/File:Odyssey-crop.jpg",
+      "recentUpdate": "2023-04-26T12:30:00Z"
     }
   ],
   "notes": [

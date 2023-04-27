@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import BookCard from "@/layouts/BookCard";
+import BookCard from "@/layouts/book/BookCard";
 import { Button, Flex, Grid, GridItem, Input, Icon } from "@chakra-ui/react";
 import { GrFilter } from "react-icons/gr";
 import { fetchBooks, searchBooks } from "../api/books";
 import Navbar from "@/layouts/NavBar";
 import FilterModal from "@/layouts/FilterModal";
+import Pagination from "@/layouts/Pagination";
 
 export async function getStaticProps() {
   const books = await fetchBooks();
@@ -15,6 +16,7 @@ export async function getStaticProps() {
 
 const Books = ({ books }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [page, setPage] = useState(1);
 
   const handleSearchTermChange = (event) => setSearchTerm(event.target.value);
 
@@ -32,9 +34,9 @@ const Books = ({ books }) => {
 
   useEffect(() => {
     if (searchTerm !== "")
-      searchBooks(searchTerm).then((data) => setFilteredBooks(data));
+      searchBooks({ searchTerm, page }).then((data) => setFilteredBooks(data));
     else setFilteredBooks(books);
-  }, [searchTerm, books]);
+  }, [searchTerm, books, page]);
 
   const renderBookCards = () => {
     return filteredBooks.map((book) => (
@@ -71,6 +73,7 @@ const Books = ({ books }) => {
         <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]} gap={6}>
           {renderBookCards()}
         </Grid>
+        <Pagination page={page} pageSize={10} action={setPage} />
       </Flex>
     </>
   );
