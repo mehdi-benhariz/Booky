@@ -11,7 +11,7 @@ import {
 import Link from "next/link";
 import BookStatus from "../BookStatus";
 const BookCard = (book) => {
-  const { id, title, author, totalPages, currentPage, hasNot, image } = book;
+  const { id, title, author, totalPages, currentPage, hasNote, image } = book;
   return (
     <Card
       direction={{ base: "column", sm: "row" }}

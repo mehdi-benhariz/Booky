@@ -24,14 +24,22 @@ const BookDetails = ({ book }) => {
   const router = useRouter();
   const toast = useToast();
 
-  console.log(book);
+  console.log(book, book.notes[0], newNote);
   if (router.isFallback) {
     //TODO give better laoding experience
     return <div>Loading...</div>;
   }
+  //
+  const handleAddNoteSpace = () => {
+    setNewNote({
+      bookId: newBook.id,
+      content: "",
+      recentUpdate: new Date().toISOString(),
+    });
+  };
 
   //*update fields for book
-  const handleBookInputChange = (event, index) => {
+  const handleBookInputChange = (event) => {
     const { name, value } = event.target;
     let bookObj = { ...newBook };
     if (!handleFieldControl(name, value)) return;
@@ -54,7 +62,9 @@ const BookDetails = ({ book }) => {
     console.log({ newBook });
     try {
       delete newBook.notes;
-      const res = await updateBook(newBook.id, newBook);
+      let updates = { ...newBook };
+      if (newNote.content) updates.hasNote = true;
+      const res = await updateBook(newBook.id, updates);
       console.log(res);
       //toast success
       toast({
@@ -72,8 +82,10 @@ const BookDetails = ({ book }) => {
   }
 
   async function handleAddOrUpdateNote() {
+    if (newNote?.content === book.notes[0]?.content) return true;
     try {
       let res;
+      console.log(newBook.hasNote);
       if (newBook.hasNote) {
         res = await updateNote(newNote.id, newNote);
 
@@ -90,7 +102,8 @@ const BookDetails = ({ book }) => {
           ...newNote,
           bookId: newBook.id,
         });
-        setNewBook({ ...newBook, hasNote: true });
+        console.log("update newBook.hasNote to true");
+        console.log({ newBook });
         //toast success
         toast({
           title: "Note added.",
@@ -107,6 +120,7 @@ const BookDetails = ({ book }) => {
   }
   async function handleUpdateDetails(e) {
     e.preventDefault();
+
     if ((await handleAddOrUpdateNote()) && (await handleUpdateBook()))
       router.push("/books");
   }
@@ -206,7 +220,7 @@ const BookDetails = ({ book }) => {
               Update
             </Button>
           </Flex>
-          {newBook.hasNote ? (
+          {newNote.recentUpdate ? (
             <Box mb={8}>
               <Text fontSize="2xl" mb={4}>
                 Note:
@@ -219,7 +233,7 @@ const BookDetails = ({ book }) => {
               />
             </Box>
           ) : (
-            <Button size="lg" mb={8}>
+            <Button size="lg" mb={8} onClick={handleAddNoteSpace}>
               Add a Note
             </Button>
           )}

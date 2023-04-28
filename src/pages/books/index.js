@@ -49,23 +49,32 @@ const Books = ({ books }) => {
     <>
       <Navbar />
       <Flex direction="column" align="center" maxW="6xl" mx="auto" my="20">
-        <Input
-          placeholder="Search Books"
-          value={searchTerm}
-          onChange={handleSearchTermChange}
-          maxW="md"
-          mb="6"
-        />
-        <Button
-          leftIcon={<Icon as={GrFilter} />}
-          onClick={() => setIsOpen(true)}
-          mb="6"
+        <Flex
+          direction={{ base: "column", md: "row" }}
+          align={{ base: "stretch", md: "center" }}
+          maxW="6xl"
+          mx="auto"
+          my="20"
         >
-          Filter
-        </Button>
+          <Input
+            placeholder="Search Books"
+            value={searchTerm}
+            onChange={handleSearchTermChange}
+            maxW="md"
+            mb="6"
+          />
+          <Button
+            leftIcon={<Icon as={GrFilter} />}
+            onClick={() => setIsOpen(true)}
+            mb="6"
+          >
+            Filter
+          </Button>
+        </Flex>
 
         <FilterModal
           isOpen={isOpen}
+          setIsOpen={setIsOpen}
           handleFilterChange={handleFilterChange}
           selectedFilters={selectedFilters}
           handleApplyFilters={handleApplyFilters}
