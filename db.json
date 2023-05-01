@@ -15,10 +15,10 @@
       "title": "To Kill a Mockingbird",
       "author": "Harper Lee",
       "totalPages": 281,
-      "currentPage": 281,
+      "currentPage": 0,
       "hasNote": true,
       "image": "https://upload.wikimedia.org/wikipedia/commons/4/4f/To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg",
-      "recentUpdate": "2023-04-28T05:38:15.470Z"
+      "recentUpdate": "2023-05-01T18:33:35.936Z"
     },
     {
       "id": "a120d40a-273e-49f1-88b9-af9b20117d80",
@@ -115,8 +115,8 @@
     {
       "id": 1,
       "bookId": "0a4d3c3f-e8ed-4a09-a9a9-2c1f8a1a23d1",
-      "content": "This is a note about The Great Gatsby and I am writing some stuff here.  I edited this",
-      "recentUpdate": "2023-05-01T18:25:54.556Z"
+      "content": "This is a note about The Great Gatsby and I am writing some stuff here.  I edited this.",
+      "recentUpdate": "2023-05-01T18:32:23.000Z"
     },
     {
       "id": 2,
@@ -126,8 +126,8 @@
     },
     {
       "bookId": "c0ef0d9d-bb07-4f78-b0b3-99d1edcd6eb8",
-      "content": "please work",
-      "recentUpdate": "2023-04-28T05:12:14.330Z",
+      "content": "please work. Now it's working hahah!",
+      "recentUpdate": "2023-05-01T18:32:44.912Z",
       "id": 3
     },
     {

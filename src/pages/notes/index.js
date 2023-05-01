@@ -57,7 +57,7 @@ const Notes = ({ notes }) => {
       ...currentNote,
       recentUpdate: new Date().toISOString(),
     });
-    console.log(res);
+    console.log({ res });
     if (res.status === 200) onClose();
   };
 

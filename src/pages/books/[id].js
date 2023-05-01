@@ -63,7 +63,7 @@ const BookDetails = ({ book }) => {
       let updates = { ...newBook };
       if (newNote.content) updates.hasNote = true;
       const res = await updateBook(newBook.id, updates);
-      console.log(res);
+      console.log({ res });
       //toast success
       toast({
         title: "Book updated.",

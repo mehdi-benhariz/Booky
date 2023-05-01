@@ -1,7 +1,9 @@
-[+] create a note details modal that will be implemented with edit function 
+[+] create a note details modal that will be implemented with edit function [X]
 [+] check error and edge case in book update page [X]
 [+] work on recent books [x] 
 [+] add recent date to book and note [X]
 [+] implement recent books function in home page [X]
 [+] fix paggination
 [+] implement filter search for book (completed/uncompleted)
+[+] add state management
+[+] clean the code
