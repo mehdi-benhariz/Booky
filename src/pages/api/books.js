@@ -22,7 +22,7 @@ export async function searchBooks({
   includeTotal = false,
 }) {
   try {
-    console.log({ searchTerm });
+    console.log({ searchTerm, filters, sort, page, limit, includeTotal });
     let url = `/books?q=${searchTerm}`;
     const start = (page - 1) * limit;
     const end = start + limit;
@@ -37,7 +37,7 @@ export async function searchBooks({
     console.log(url);
     const response = await api.get(url);
 
-    return response.data;
+    return response;
   } catch (error) {
     console.error("Error searching books:", error);
     throw error;

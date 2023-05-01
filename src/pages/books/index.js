@@ -8,16 +8,16 @@ import FilterModal from "@/layouts/FilterModal";
 import Pagination from "@/layouts/Pagination";
 
 export async function getStaticProps() {
-  const books = await fetchBooks();
+  const res = await searchBooks({});
   return {
-    props: { books },
+    props: { books: res.data },
   };
 }
 
 const Books = ({ books }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
-
+  const [totalCount, setTotalCount] = useState(0);
   const handleSearchTermChange = (event) => setSearchTerm(event.target.value);
 
   const [filteredBooks, setFilteredBooks] = useState(books);
@@ -33,9 +33,12 @@ const Books = ({ books }) => {
   };
 
   useEffect(() => {
-    if (searchTerm !== "")
-      searchBooks({ searchTerm, page }).then((data) => setFilteredBooks(data));
-    else setFilteredBooks(books);
+    // if (searchTerm !== "")
+    searchBooks({ searchTerm, page }).then((res) => {
+      setFilteredBooks(res.data);
+      setTotalCount(res.headers["x-total-count"]);
+    });
+    // else setFilteredBooks(books);
   }, [searchTerm, books, page]);
 
   const renderBookCards = () => {
@@ -82,7 +85,12 @@ const Books = ({ books }) => {
         <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]} gap={6}>
           {renderBookCards()}
         </Grid>
-        <Pagination page={page} pageSize={10} action={setPage} />
+        <Pagination
+          page={page}
+          pageSize={10}
+          action={setPage}
+          totalCount={totalCount}
+        />
       </Flex>
     </>
   );

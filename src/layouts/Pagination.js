@@ -7,9 +7,10 @@ export default function Pagination({ page, pageSize, totalCount, action }) {
   const totalPages = Math.ceil(totalCount / pageSize);
   const start = (page - 1) * pageSize;
   const end = start + pageSize;
+  console.log({ start, end, page, pageSize, totalCount, totalPages });
 
-  const incrementPage = () => page < totalPages && action(page + 1);
-  const decrementPage = () => page > 1 && action(page - 1);
+  const incrementPage = (x) => page < totalPages && action(x);
+  const decrementPage = (x) => page > 1 && action(x);
 
   const handlePageChange = (newPage) => router.push(`/books?page=${newPage}`);
 
@@ -18,7 +19,10 @@ export default function Pagination({ page, pageSize, totalCount, action }) {
       <HStack spacing={4}>
         <Button
           disabled={page === 1}
-          onClick={() => decrementPage() && handlePageChange(page)}
+          onClick={() => {
+            decrementPage(page - 1);
+            handlePageChange(page - 1);
+          }}
           leftIcon={<ArrowLeftIcon />}
         >
           Prev
@@ -27,15 +31,20 @@ export default function Pagination({ page, pageSize, totalCount, action }) {
           <Button
             key={p}
             colorScheme={p === page ? "blue" : "gray"}
-            onClick={() => handlePageChange(p)}
+            onClick={() => {
+              action(p);
+              handlePageChange(p);
+            }}
           >
             {p}
           </Button>
         ))}
-        {page}
         <Button
           disabled={page === totalPages}
-          onClick={() => incrementPage() && handlePageChange(page)}
+          onClick={() => {
+            incrementPage(page + 1);
+            handlePageChange(page + 1);
+          }}
           rightIcon={<ArrowRightIcon />}
         >
           Next
