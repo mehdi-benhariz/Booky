@@ -46,6 +46,7 @@ export async function deleteNote(noteId) {
 export async function updateNote(noteId, updates) {
   try {
     const response = await api.patch(`/notes/${noteId}`, updates);
+    console.log(response);
     return response.data;
   } catch (error) {
     console.error("Error updating note:", error);

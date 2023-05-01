@@ -26,9 +26,9 @@
       "author": "Jane Austen",
       "totalPages": 279,
       "currentPage": 239,
-      "hasNote": false,
+      "hasNote": true,
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/PrideAndPrejudiceTitlePage.jpg/800px-PrideAndPrejudiceTitlePage.jpg",
-      "recentUpdate": "2023-04-28T05:38:56.521Z"
+      "recentUpdate": "2023-05-01T17:08:15.547Z"
     },
     {
       "id": "a7c14f28-309a-46d9-9f18-53727d7df0c6",
@@ -115,8 +115,8 @@
     {
       "id": 1,
       "bookId": "0a4d3c3f-e8ed-4a09-a9a9-2c1f8a1a23d1",
-      "content": "This is a note about The Great Gatsby and I am writing some stuff here.  I write this note with mansour",
-      "recentUpdate": "2023-04-26T12:30:00Z"
+      "content": "This is a note about The Great Gatsby and I am writing some stuff here.  I edited this",
+      "recentUpdate": "2023-05-01T18:25:54.556Z"
     },
     {
       "id": 2,
@@ -129,6 +129,12 @@
       "content": "please work",
       "recentUpdate": "2023-04-28T05:12:14.330Z",
       "id": 3
+    },
+    {
+      "bookId": "a120d40a-273e-49f1-88b9-af9b20117d80",
+      "content": "I started reading this and I found it very interesting!",
+      "recentUpdate": "2023-05-01T17:07:57.715Z",
+      "id": 4
     }
   ]
 }

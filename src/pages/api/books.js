@@ -60,7 +60,7 @@ export async function InsertBook(book) {
 export async function deleteBook(bookId) {
   try {
     const response = await api.delete(`/books/${bookId}`);
-    return response.data;
+    return response;
   } catch (error) {
     console.error("Error deleting book:", error);
     throw error;

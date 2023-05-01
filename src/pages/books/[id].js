@@ -58,8 +58,6 @@ const BookDetails = ({ book }) => {
   };
 
   async function handleUpdateBook() {
-    console.log("updating book...");
-    console.log({ newBook });
     try {
       delete newBook.notes;
       let updates = { ...newBook };
@@ -74,7 +72,7 @@ const BookDetails = ({ book }) => {
         duration: 3000,
         isClosable: true,
       });
-      if (res) return true;
+      if (res.status === 200) return true;
     } catch (error) {
       //toast error
       return false;

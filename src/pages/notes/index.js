@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   Box,
-  VStack,
   Heading,
   Button,
   useDisclosure,
@@ -17,9 +16,14 @@ import {
   Input,
   Grid,
   GridItem,
+  Text,
+  Editable,
+  EditablePreview,
+  EditableTextarea,
 } from "@chakra-ui/react";
-import { fetchNotes } from "../api/notes";
+import { fetchNotes, updateNote } from "../api/notes";
 import NoteCard from "@/layouts/noteCard";
+import Link from "next/link";
 
 export async function getStaticProps() {
   const notes = await fetchNotes();
@@ -31,6 +35,7 @@ export async function getStaticProps() {
 const Notes = ({ notes }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentNote, setcurrentNote] = useState({});
 
   const filteredNotes = notes.filter((note) =>
     note.content.toLowerCase().includes(searchTerm.toLowerCase())
@@ -40,8 +45,20 @@ const Notes = ({ notes }) => {
     setSearchTerm(event.target.value);
   };
 
-  const handleNoteEdit = (index) => {
-    // handle note edit logic
+  const handleModalRequest = (index) => {
+    let theNote = notes[index];
+    setcurrentNote(theNote);
+    onOpen();
+  };
+  const handleNoteEdit = async (e) => {
+    e.preventDefault();
+    console.log(currentNote);
+    const res = await updateNote(currentNote.id, {
+      ...currentNote,
+      recentUpdate: new Date().toISOString(),
+    });
+    console.log(res);
+    if (res.status === 200) onClose();
   };
 
   return (
@@ -66,35 +83,35 @@ const Notes = ({ notes }) => {
       >
         {filteredNotes.map((note, index) => (
           <GridItem key={index} colSpan={{ base: 1, md: 1, lg: 1 }}>
-            <NoteCard note={note} onEdit={() => handleNoteEdit(index)} />
+            <NoteCard note={note} onEdit={() => handleModalRequest(index)} />
           </GridItem>
         ))}
       </Grid>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} size="full">
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Edit Note</ModalHeader>
+          <ModalHeader>Note for Book</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <FormControl id="note-content">
-              <FormLabel>Note Content</FormLabel>
-              <Input type="text" />
-            </FormControl>
-            <FormControl id="note-book">
-              <FormLabel>Note Book</FormLabel>
-              <Input type="text" />
-            </FormControl>
-            <FormControl id="note-recent-check">
-              <FormLabel>Note Recent Check</FormLabel>
-              <Input type="date" />
-            </FormControl>
+            <Editable defaultValue={currentNote.content}>
+              <EditablePreview />
+              <EditableTextarea
+                onChange={(e) =>
+                  setcurrentNote({ ...currentNote, content: e.target.value })
+                }
+              />
+            </Editable>
+
+            <ModalFooter>
+              <Button onClick={handleNoteEdit} colorScheme="blue" mr={2}>
+                Update
+              </Button>
+
+              <Button>
+                <Link href={`books/${currentNote.bookId}`}>Return to book</Link>
+              </Button>
+            </ModalFooter>
           </ModalBody>
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Save
-            </Button>
-            <Button onClick={onClose}>Cancel</Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </Box>
