@@ -3,7 +3,7 @@
 [+] work on recent books [x] 
 [+] add recent date to book and note [X]
 [+] implement recent books function in home page [X]
-[+] fix paggination
+[+] fix paggination [X]
 [+] implement filter search for book (completed/uncompleted)
 [+] add state management
 [+] clean the code

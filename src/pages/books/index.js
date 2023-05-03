@@ -35,6 +35,7 @@ const Books = ({ books }) => {
   useEffect(() => {
     // if (searchTerm !== "")
     searchBooks({ searchTerm, page }).then((res) => {
+      console.log(res);
       setFilteredBooks(res.data);
       setTotalCount(res.headers["x-total-count"]);
     });

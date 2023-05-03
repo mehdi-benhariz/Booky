@@ -229,6 +229,7 @@ const BookDetails = ({ book }) => {
                 onChange={handleNoteInputChange}
                 size="lg"
               />
+              <Button></Button>
             </Box>
           ) : (
             <Button size="lg" mb={8} onClick={handleAddNoteSpace}>

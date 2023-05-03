@@ -11,18 +11,15 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
-  FormControl,
-  FormLabel,
   Input,
   Grid,
   GridItem,
-  Text,
   Editable,
   EditablePreview,
   EditableTextarea,
 } from "@chakra-ui/react";
 import { fetchNotes, updateNote } from "../api/notes";
-import NoteCard from "@/layouts/noteCard";
+import NoteCard from "@/layouts/note/noteCard";
 import Link from "next/link";
 
 export async function getStaticProps() {

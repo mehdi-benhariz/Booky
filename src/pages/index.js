@@ -12,7 +12,7 @@ export default function HomePage() {
       limit: 3,
       sort: "recentUpdate&_order=desc",
     });
-    if (res) setrecentBooks(res);
+    if (res) setrecentBooks(res.data);
     console.log(res);
   }
 
