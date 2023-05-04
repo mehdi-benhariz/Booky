@@ -1,26 +1,9 @@
 import { useState } from "react";
-import {
-  Box,
-  Heading,
-  Button,
-  useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  ModalFooter,
-  Input,
-  Grid,
-  GridItem,
-  Editable,
-  EditablePreview,
-  EditableTextarea,
-} from "@chakra-ui/react";
+import { Box, Heading, Input, Grid, GridItem } from "@chakra-ui/react";
 import { fetchNotes, updateNote } from "../api/notes";
 import NoteCard from "@/layouts/note/noteCard";
-import Link from "next/link";
+import { useStore } from "@/store";
+import EditNoteModal from "@/layouts/note/EditModal";
 
 export async function getStaticProps() {
   const notes = await fetchNotes();
@@ -30,13 +13,14 @@ export async function getStaticProps() {
 }
 
 const Notes = ({ notes }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const [searchTerm, setSearchTerm] = useState("");
-  const [currentNote, setcurrentNote] = useState({});
 
   const filteredNotes = notes.filter((note) =>
     note.content.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const toggleEditNoteModal = useStore((state) => state.toggleEditNoteModal);
+  const setcurrentNote = useStore((state) => state.setCurrentNote);
 
   const handleSearchTermChange = (event) => {
     setSearchTerm(event.target.value);
@@ -45,17 +29,7 @@ const Notes = ({ notes }) => {
   const handleModalRequest = (index) => {
     let theNote = notes[index];
     setcurrentNote(theNote);
-    onOpen();
-  };
-  const handleNoteEdit = async (e) => {
-    e.preventDefault();
-    console.log(currentNote);
-    const res = await updateNote(currentNote.id, {
-      ...currentNote,
-      recentUpdate: new Date().toISOString(),
-    });
-    console.log({ res });
-    if (res.status === 200) onClose();
+    toggleEditNoteModal();
   };
 
   return (
@@ -84,33 +58,7 @@ const Notes = ({ notes }) => {
           </GridItem>
         ))}
       </Grid>
-      <Modal isOpen={isOpen} onClose={onClose} size="full">
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Note for Book</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Editable defaultValue={currentNote.content}>
-              <EditablePreview />
-              <EditableTextarea
-                onChange={(e) =>
-                  setcurrentNote({ ...currentNote, content: e.target.value })
-                }
-              />
-            </Editable>
-
-            <ModalFooter>
-              <Button onClick={handleNoteEdit} colorScheme="blue" mr={2}>
-                Update
-              </Button>
-
-              <Button>
-                <Link href={`books/${currentNote.bookId}`}>Return to book</Link>
-              </Button>
-            </ModalFooter>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+      <EditNoteModal />
     </Box>
   );
 };

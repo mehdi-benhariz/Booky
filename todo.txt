@@ -4,6 +4,6 @@
 [+] add recent date to book and note [X]
 [+] implement recent books function in home page [X]
 [+] fix paggination [X]
-[+] implement filter search for book (completed/uncompleted)
-[+] add state management
+[+] implement filter search for book (completed/uncompleted) [X]
+[+] add state management[X]
 [+] clean the code

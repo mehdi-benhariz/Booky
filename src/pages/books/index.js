@@ -34,13 +34,14 @@ const Books = ({ books }) => {
 
   useEffect(() => {
     // if (searchTerm !== "")
-    searchBooks({ searchTerm, page }).then((res) => {
+    console.log(selectedFilters);
+    searchBooks({ searchTerm, page, filters: selectedFilters }).then((res) => {
       console.log(res);
       setFilteredBooks(res.data);
       setTotalCount(res.headers["x-total-count"]);
     });
     // else setFilteredBooks(books);
-  }, [searchTerm, books, page]);
+  }, [searchTerm, books, page, selectedFilters]);
 
   const renderBookCards = () => {
     return filteredBooks.map((book) => (

@@ -32,6 +32,12 @@ export async function searchBooks({
     if (sort !== "") url += `&_sort=${sort}`;
     if (filters.length > 0)
       filters.forEach((filter) => {
+        if (filter === "new") url += `&currentPage=0`;
+        if (filter === "recent")
+          url += `&recentUpdate_gte=${new Date(
+            new Date().setDate(new Date().getDate() - 7)
+          ).toISOString()}`;
+        if (filter === "completed") url += `&currentPage=totalPages`;
         url += `&${filter.type}=${filter.value}`;
       });
     console.log(url);
