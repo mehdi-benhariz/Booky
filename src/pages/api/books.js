@@ -56,7 +56,7 @@ export async function InsertBook(book) {
       ...book,
       recentUpdate: new Date(),
     });
-    return response.data;
+    return response;
   } catch (error) {
     console.error("Error adding book:", error);
     throw error;

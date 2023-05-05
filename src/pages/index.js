@@ -4,8 +4,11 @@ import { Box, Heading } from "@chakra-ui/react";
 import Options from "@/layouts/Options";
 import { searchBooks } from "./api/books";
 import RecentBookCard from "@/layouts/book/RecentBookCard";
+import { useStore } from "@/store";
 export default function HomePage() {
   const [recentBooks, setrecentBooks] = useState([]);
+  const hasUpdated = useStore((state) => state.hasUpdated);
+  const isBookDeleted = useStore((state) => state.isBookDeleted);
 
   async function getRecentBooks() {
     const res = await searchBooks({
@@ -16,7 +19,7 @@ export default function HomePage() {
     console.log(res);
   }
 
-  useEffect(() => getRecentBooks, []);
+  useEffect(() => getRecentBooks, [hasUpdated, isBookDeleted]);
 
   return (
     <Box p={10}>

@@ -28,7 +28,7 @@ const Options = () => {
         </Link>
       </GridItem>
       <GridItem>
-        <Link href="books/add">
+        <Link href="/soon">
           <Center h="140px" w="140px" bg="white" boxShadow="lg">
             <SettingsIcon boxSize={10} color={"gray.500"} />
           </Center>

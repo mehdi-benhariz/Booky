@@ -16,6 +16,8 @@ import { CloseIcon } from "@chakra-ui/icons";
 import { handleFieldControl } from "@/utils/validation";
 import { InsertBook } from "../api/books";
 import { v4 as uuidv4 } from "uuid";
+import { useRouter } from "next/router";
+import { useToast } from "@chakra-ui/react";
 
 export default function AddBook() {
   const [books, setBooks] = useState([
@@ -31,6 +33,8 @@ export default function AddBook() {
 
   //
   const [errors, setErrors] = useState([]);
+  const router = useRouter();
+  const toast = useToast();
 
   const addBook = () => {
     setBooks([
@@ -55,7 +59,7 @@ export default function AddBook() {
   const handleInputChange = (event, index) => {
     const { name, value } = event.target;
     const newBooks = [...books];
-    if (!handleFieldControl(name, value)) return;
+    // if (!handleFieldControl(name, value)) return;
     newBooks[index][name] = name === "totalPages" ? parseInt(value) : value;
     setBooks(newBooks);
   };
@@ -69,21 +73,33 @@ export default function AddBook() {
         ...book,
       };
       const res = await InsertBook(newBook);
+      console.log(res);
       if (res.status === 201) {
         console.log("Book added successfully");
+        toast({
+          title: `Book ${newBook.title} Added.`,
+          description: "We've added your book for you.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
         removeBook(index);
       } else {
         //TODO add error handling
-        console.log("Error adding book");
+
         setErrors([...errors, res.data]);
+        console.log("Errors: ", res.data);
+        toast({
+          title: `Book ${newBook.title} Added.`,
+          description: `error adding book ${newBook.title}`,
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
       }
     });
     //TODO Seperate error handling in a different function
-    if (errors.length > 0) {
-      console.log("Errors: ", errors);
-    }
-    //redirect to books page
-    else router.push("/books");
+    if (errors.length === 0) router.push("/books");
   };
 
   return (

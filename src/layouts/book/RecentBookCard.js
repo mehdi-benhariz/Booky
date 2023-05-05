@@ -11,23 +11,27 @@ import Image from "next/image";
 import { countProgress } from "@/utils/UI";
 import { deleteBook, updateBook } from "@/pages/api/books";
 import { useRouter } from "next/router";
+import { useStore } from "@/store";
+import DeleteBookModal from "../DeleteBookModal";
 
 const RecentBookCard = (props) => {
   const book = props;
   const router = useRouter();
+  const toggleHasUpdated = useStore((state) => state.toggleHasUpdated);
+
+  const setBookIdToDelete = useStore((state) => state.setBookIdToDelete);
+  const openModal = useStore((state) => state.openModal);
+
   async function setComplete() {
     const res = await updateBook(book.id, { currentPage: book.totalPages });
-    if (res)
-      //TODO update book list
+    if (res.status === 200) {
       console.log(res);
+      toggleHasUpdated();
+    }
   }
   async function handleDeleteRequest() {
-    //TODO add custom verification modal
-    const res = await deleteBook(book.id);
-    if (res) {
-      //TODO update book list
-      console.log(res);
-    }
+    setBookIdToDelete(book.id);
+    openModal();
   }
   const navigateDetails = () => router.push(`/books/${book.id}`);
 
@@ -92,6 +96,7 @@ const RecentBookCard = (props) => {
           </Flex>
         </Flex>
       </Box>
+      <DeleteBookModal />
     </Box>
   );
 };

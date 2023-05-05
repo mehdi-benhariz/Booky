@@ -2,7 +2,13 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["en.wikipedia.org", "upload.wikimedia.org"],
+    //! possible security issue
+    domains: [
+      "m.media-amazon.com",
+      "upload.wikimedia.org",
+      "m.media-amazon.com",
+      "*",
+    ],
   },
 };
 
