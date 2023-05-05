@@ -21,7 +21,7 @@ const FilterModal = (props) => {
   } = props;
   const filterOptions = [
     { label: "New", value: "new" },
-    { lable: "Recent", value: "recent" },
+    { label: "Recent", value: "recent" },
     // { label: "completed", value: "completed" },
   ];
   return (
