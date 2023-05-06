@@ -24,15 +24,19 @@ To install and run the project locally, follow these steps:
 `git clone <repository-url>`
 
 2. Navigate to the project directory:
+
 `cd <project-directory>`
 
 3. Install the project dependencies:
+
 `npm install`
 
 4. Start the JSON server:
+
 `npm run json-server`
 
 5. Start the development server:
+
 `npm run dev`
 
 6. Open your web browser and navigate to [http://localhost:3000](http://localhost:3000) to view the application.
