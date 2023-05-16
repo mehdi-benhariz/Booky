@@ -12,10 +12,10 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import { getBookById, fetchBooks, deleteBook, updateBook } from "../../api/books";
+import { getBookById, fetchBooks, deleteBook, updateBook } from "@/api/books";
 import { useRouter } from "next/router";
 import { handleFieldControl } from "@/utils/validation";
-import { InsertNote, updateNote } from "../../api/notes";
+import { InsertNote, updateNote } from "@/api/notes";
 import { countProgress } from "@/utils/UI";
 
 const BookDetails = ({ book }) => {

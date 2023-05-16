@@ -1,4 +1,4 @@
-import { deleteBook } from "@/pages/api/books";
+import { deleteBook } from "@/api/books";
 import { useStore } from "@/store";
 import {
   Button,
