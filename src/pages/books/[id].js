@@ -21,7 +21,9 @@ import { countProgress } from "@/utils/UI";
 const BookDetails = ({ book }) => {
   const [newBook, setNewBook] = useState({ ...book });
   //!problem !
-  const [newNote, setNewNote] = useState(book.notes && book.notes[0] ? { ...book.notes[0] } : null);
+  const [newNote, setNewNote] = useState();
+  if(book.notes )
+   setNewNote(book.notes[0]);
   const router = useRouter();
   const toast = useToast();
 
@@ -219,7 +221,7 @@ const BookDetails = ({ book }) => {
               Update
             </Button>
           </Flex>
-          {newNote.recentUpdate ? (
+          {newNote?.recentUpdate ? (
             <Box mb={8}>
               <Text fontSize="2xl" mb={4}>
                 Note:
