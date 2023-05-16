@@ -22,8 +22,7 @@ const BookDetails = ({ book }) => {
   const [newBook, setNewBook] = useState({ ...book });
   //!problem !
   const [newNote, setNewNote] = useState();
-  if(book.notes )
-   setNewNote(book.notes[0]);
+
   const router = useRouter();
   const toast = useToast();
 
