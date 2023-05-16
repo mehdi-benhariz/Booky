@@ -7,7 +7,8 @@ const nextConfig = {
       "m.media-amazon.com",
       "upload.wikimedia.org",
       "m.media-amazon.com",
-      "*",
+      "images-na.ssl-images-amazon.com",
+      "*"
     ],
   },
 };
