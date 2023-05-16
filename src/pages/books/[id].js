@@ -59,7 +59,7 @@ const BookDetails = ({ book }) => {
 
   async function handleUpdateBook() {
     try {
-      delete newBook.notes;
+      if(newBook.hasOwnProperty(notes)) delete newBook.notes;
       let updates = { ...newBook };
       if (newNote.content) updates.hasNote = true;
       const res = await updateBook(newBook.id, updates);
