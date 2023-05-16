@@ -20,6 +20,7 @@ import { countProgress } from "@/utils/UI";
 
 const BookDetails = ({ book }) => {
   const [newBook, setNewBook] = useState({ ...book });
+  //!problem !
   const [newNote, setNewNote] = useState(book.notes && book.notes[0] ? { ...book.notes[0] } : null);
   const router = useRouter();
   const toast = useToast();
