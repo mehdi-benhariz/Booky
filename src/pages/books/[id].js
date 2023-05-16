@@ -25,7 +25,7 @@ const BookDetails = ({ book }) => {
   const router = useRouter();
   const toast = useToast();
 
-  console.log(book, book.notes[0], newNote);
+  console.log(book, book.notes, newNote);
   if (router.isFallback) {
     //TODO give better laoding experience
     return <div>Loading...</div>;
