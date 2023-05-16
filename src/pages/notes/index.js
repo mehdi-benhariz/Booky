@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Box, Heading, Input, Grid, GridItem } from "@chakra-ui/react";
-import { fetchNotes, updateNote } from "../api/notes";
+import { fetchNotes, updateNote } from "../../api/notes";
 import NoteCard from "@/layouts/note/noteCard";
 import { useStore } from "@/store";
 import EditNoteModal from "@/layouts/note/EditModal";

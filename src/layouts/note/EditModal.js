@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useStore } from "@/store";
-import { updateNote } from "@/pages/api/notes";
+import { updateNote } from "@/api/notes";
 
 const EditNoteModal = () => {
   const isEditNoteModalOpen = useStore((state) => state.isEditNoteModalOpen);

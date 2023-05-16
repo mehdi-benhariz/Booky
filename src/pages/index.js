@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box, Heading } from "@chakra-ui/react";
 
 import Options from "@/layouts/Options";
-import { searchBooks } from "./api/books";
+import { searchBooks } from "../api/books";
 import RecentBookCard from "@/layouts/book/RecentBookCard";
 import { useStore } from "@/store";
 export default function HomePage() {

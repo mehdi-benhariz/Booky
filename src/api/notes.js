@@ -1,7 +1,8 @@
+import { getApiUrl } from "@/utils/api";
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: getApiUrl(),
 });
 
 export async function fetchNotes() {
