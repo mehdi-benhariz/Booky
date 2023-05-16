@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
 import { handleFieldControl } from "@/utils/validation";
-import { InsertBook } from "../api/books";
+import { InsertBook } from "../../api/books";
 import { v4 as uuidv4 } from "uuid";
 
 export default function AddBook() {

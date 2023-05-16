@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import BookCard from "@/layouts/book/BookCard";
 import { Button, Flex, Grid, GridItem, Input, Icon } from "@chakra-ui/react";
 import { GrFilter } from "react-icons/gr";
-import { fetchBooks, searchBooks } from "../api/books";
+import { fetchBooks, searchBooks } from "../../api/books";
 import Navbar from "@/layouts/NavBar";
 import FilterModal from "@/layouts/FilterModal";
 import Pagination from "@/layouts/Pagination";

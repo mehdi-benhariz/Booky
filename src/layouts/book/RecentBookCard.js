@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { countProgress } from "@/utils/UI";
-import { deleteBook, updateBook } from "@/pages/api/books";
+import { deleteBook, updateBook } from "@/api/books";
 import { useRouter } from "next/router";
 
 const RecentBookCard = (props) => {
