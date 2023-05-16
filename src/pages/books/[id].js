@@ -21,12 +21,12 @@ import { countProgress } from "@/utils/UI";
 const BookDetails = ({ book }) => {
   const [newBook, setNewBook] = useState({ ...book });
   //!problem !
-  const [newNote, setNewNote] = useState();
+  const [newNote, setNewNote] = useState(book?.notes[0] || {});
 
   const router = useRouter();
   const toast = useToast();
 
-  console.log(book, book.notes, newNote);
+  console.log(book, book?.notes, newNote);
   if (router.isFallback) {
     //TODO give better laoding experience
     return <div>Loading...</div>;
@@ -82,7 +82,7 @@ const BookDetails = ({ book }) => {
   }
 
   async function handleAddOrUpdateNote() {
-    if (newNote?.content === book.notes[0]?.content) return true;
+    if (newNote?.content === book?.notes[0]?.content) return true;
     try {
       let res;
       console.log(newBook.hasNote);
